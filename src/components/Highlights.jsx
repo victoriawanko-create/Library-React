@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from "@fontawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import Highlight from "./ui/Highlight";
 
 const Highlights = () => {
     return (
@@ -8,20 +9,28 @@ const Highlights = () => {
                 <div className="row">
                     <h2 className="section__title"> 
                         Why choose <span className="purple">Library </span>
-                        <h2>
+                        </h2>
                         <div className="highlight__wrapper">
-                            <div className="highlight">
-                                <div className="highlight__img">
-                            <FontAwesomeIcon ICON="bolt" />
-                        </div>
-                        <h3 className="highlight__subtitle">Easy and Quick</h3>
-                        <p className="highlight__para">
-                            Get access to the book you purchases online instantly.
-                        <p>
+                            <Highlight
+                            icon={<FontAwesomeIcon icon="bolt" />}
+                            title="Easy and Quick"
+                            para="Get access to the book you purchases online instantly."
+                            />
+                            <Highlight
+                            icon={<FontAwesomeIcon icon="book-open" />}
+                            title="10,000+ Books"
+                            para="Library has books in all your favorite categories."
+                            />
+                            <Highlight
+                            icon={<FontAwesomeIcon icon="tags" />}
+                            title="Affordable Prices"
+                            para="Get hands on popular books for as little as $10."
+                            />
                     </div>
                 </div>
-            </div>
           </div>
         </section>
      );
 };
+
+export default Highlights;
