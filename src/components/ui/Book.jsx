@@ -1,17 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Book = () => {
+const Book = ({ book}) => {
     return (
          <div className="book">
             <a href="">
                 <figure className="book__img--wrapper">
-                    <img src="https://m.media-amazon.com/images/I/61mIq2iJUXL._AC_UF1000,1000_QL80_.jpg" />
+                    <img
+                    src={book.url}
+                    alt=""
+                    className="book__img" />
                 </figure>
             </a>
             <div className="book__title">
                 <a href="/" className="book__title--link">
-                Atomic Habits
+                {book.title}
                 </a>
             </div>
             <div className="book__ratings">
