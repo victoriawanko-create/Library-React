@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Book = ({ book}) => {
     const rating = 4;
@@ -20,7 +21,10 @@ const Book = ({ book}) => {
             </div>
             <div className="book__ratings">
                 {
-                    new Array(4).fill(0).map((element, index) => <FontAwesomeIcon icon="star" key={index} />)
+                    new Array(Math.floor(book.rating)).fill(0).map((_, index) => <FontAwesomeIcon icon={faStar} key={index} />)
+                }
+                {
+                   !Number.isInteger(book.rating) && <FontAwesomeIcon icon={faStarHalfAlt} />  
                 }
             </div>
             <div className="book__price">

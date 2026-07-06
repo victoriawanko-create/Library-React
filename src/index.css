@@ -799,6 +799,13 @@ select {
   .book__selected--description {
     width: 100%;
   }
+  .nav__list {
+    display: none;
+  }
+
+  .btn__menu {
+    display: block;
+  }
 }
 
 

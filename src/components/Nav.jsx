@@ -1,59 +1,68 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LibraryLogo from '../assets/Library.svg';
+import { faBars, faShoppingCart, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = () => {
+  function openMenu() {
+    document.body.classList += "menu--open";
+  }
+
+  function closeMenu() {
+    document.body.classList.remove("menu--open");
+  }
+
   return (
     <nav> 
          <div className="nav__container">
-            <a href ="/">
+            <Link to ="/">
             <img src={LibraryLogo} className="logo" />
-            </a>
+            </Link>
             <ul className="nav__links">
                 <li className="nav__list">
-                    <a href="/" className="nav__link">
+                    <Link>="/" className="nav__link">
                     Home
-                    </a>
+                    </Link>
                 </li>
                 <li className="nav__list">
-                    <a href="/" className="nav__link">
+                    <Link to="/" className="nav__link">
                     Books
-                    </a>
+                    </Link>
                 </li>
-                <button className="btn__menu">
+                <button className="btn__menu" onClick={openMenu}>
                 <FontAwesomeIcon icon="bars" />
                 </button>
                 <li className="nav__icon">
-                <a href="/cart" className="nav__link">
+                <Link to="/cart" className="nav__link">
                 <FontAwesomeIcon icon="shopping-cart" />
                 </a>
                 <span className="cart__length">2</span>
                 </li>
             </ul>
             <div className="menu__backdrop">
-              <button className="btn__menu btn__menu--close">
-                <FontAwesomeIcon icon="times" />
+              <button className="btn__menu btn__menu--close" onClick={closeMenu}>
+                <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <ul className="menu__links">
                   <li>
-                    <a href="/" className="menu__link">
+                    <Link to="/" className="menu__link">
                     Home
                     </a>
                   </li>
                   <li>
-                    <a href="/" className="menu__link">
+                    <Link to="/" className="menu__link">
                     Books
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/" className="menu__link">
+                    <Link href="/" className="menu__link">
                     Cart
-                    </a>
+                    </Link>
                   </li>
                 </ul>
             </div>
          </div>
-    </nav>
+    </>
   );
 };
 
