@@ -31,8 +31,10 @@ const Books = ({ books: initialBooks }) => {
                 books
                 .slice()
                 .sort ((a, b,) =>
-                b.rating - a.rating));
+                b.rating - a.rating)
+            );
         }
+    }
 
     return (
         <div id="books__body">
@@ -61,6 +63,6 @@ const Books = ({ books: initialBooks }) => {
         </div>
     )
 }
-}
+
 
 export default Books
