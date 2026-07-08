@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = () => {
+const Cart = ({ cart }) => {
     return (
         <div id="books__body">
             <main id="books__main">
@@ -15,19 +15,23 @@ const Cart = () => {
                                 <span className="cart__quantity">Quantity</span>
                                 <span className="cart__total">Price</span>
                             </div>
+
                             <div className="cart__body">
+                                {cart.map((book) => {
+                                        return (
                                 <div className="cart__item">
                                     <div className="cart__book">
                                         <img
-                                        src=""
-                                        class="cart__book--img"
+                                        src={book.url}
+                                        className="cart__book--img"
                                         alt=""
                                         />
                                         <div className="cart__book--info">
                                             <span className="cart__book--title">
-                                                Crack the coding interview
+                                                {book.title}
                                             </span>
                                             <span className="cart__book--price">
+                                                ${(book.salePrice || book.originalPrice).toFixed(2)}
                                                 $10.00
                                             </span>
                                             <button className="cart__book--remove">
@@ -35,14 +39,20 @@ const Cart = () => {
                                             </button>
                                         </div>
                                         <div className="cart__quantity">
-                                            <input type="number" min={0} maz={99} class="cart__input" />
+                                            <input
+                                            type="number"
+                                            min={0}
+                                            max={99}
+                                            className="cart__input"
+                                            />
                                         </div>
                                         <div className="cart__total">
                                             $10.00
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            );
+                        })};
                             <div className="total">
                                 <div className="total__item total__sub-total">
                                     <span>Subtotal</span>
@@ -56,17 +66,19 @@ const Cart = () => {
                                     <span>Total</span>
                                     <span>$10.00</span>
                                 </div>
+                                
                                 <button className="btn btn__checkout no-cursor"
                                 onClick={() => alert(`Haven't got around to doing this yet :)`)}>
                                     Proceed to checkout
                                 </button>
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
+             </div>
             </main>
         </div>
-    );
-}
+
+)};
 
 export default Cart;
