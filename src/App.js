@@ -23,7 +23,7 @@ import Cart from "./pages/Cart";
         item.id === book.id 
       ? {
           ...item,
-          quantity: +quantity
+          quantity: +quantity,
       }
       : item
     )
@@ -34,6 +34,13 @@ function removeItem(item) {
   setCart(cart.filter(book => book.id !== item.id))
 }
   
+function numberOfItems () {
+  let counter = 0;
+  cart.forEach(item => {
+    counter += item.quantity
+  })
+  return counter;
+}
 
 useEffect(() => {
     console.log(cart)
@@ -42,31 +49,37 @@ useEffect(() => {
   return (
     <Router>
     <div className="App">
-      <Nav />
-      <Route path="/" exact component={Home}/>
-      <Route path="/books" exact render={() => <Books books={books} />}/>
-      <Route 
-      path="/books/:id" 
-      render={() => (
-      <BookInfo books={books} addToCart={addToCart}/>
-    )}
+      <Nav numberOfItems={numberOfItems()} />
+
+      <Route path="/" exact component={Home} />
+
+      <Route
+        path="/books"
+        exact
+        render={() => <Books books={books} />} 
       />
-      <Route path="/cart"
-      render={() => (
-      <Cart
-        books={books}
-        cart={cart}
-        changeQuantity={changeQuantity} 
-        removeItem={removeItem}
-      />)}
-      />
+
       <Route
         path="/books/:id"
         exact
         render={() => (
-    <BookInfo books={books} addToCart={addToCart} cart={cart} />
-  )}
-/>
+          <BookInfo books={books} addToCart={addToCart} cart={cart} />
+          )}
+       />
+      
+      <Route
+        path="/cart"
+        exact
+        render={() => (
+           <Cart
+           books={books}
+           cart={cart}
+           changeQuantity={changeQuantity}
+           removeItem={removeItem}
+          />
+        )}
+      />
+
       <Footer />
     </div>
     </Router>
