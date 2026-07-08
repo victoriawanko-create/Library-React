@@ -10,16 +10,32 @@ import BookInfo from './pages/BookInfo.jsx';
 import Cart from "./pages/Cart";
 
 
-function App() {
-  const [cart, setCart] = useState([]);
+  function App() {
+   const [cart, setCart] = useState([]);
 
   function addToCart(book) {
-    const dupeItem = cart.find(item => +item.id === +book.id)
-    console.log(dipeItem)
-    setCart([...cart, {...book, quantity: 1}])
+    setCart([...cart, {...book, quantity: 1 }]);
   }
 
-  useEffect(() => {
+  function changeQuantity(book, quantity) {
+    setCart(
+      cart.map((item) =>
+        item.id === book.id 
+      ? {
+          ...item,
+          quantity: +quantity
+      }
+      : item
+    )
+  );
+}
+
+function removeItem(item) {
+  setCart(cart.filter(book => book.id !== item.id))
+}
+  
+
+useEffect(() => {
     console.log(cart)
   }, [cart])
 
@@ -31,13 +47,23 @@ function App() {
       <Route path="/books" exact render={() => <Books books={books} />}/>
       <Route 
       path="/books/:id" 
-      render={() => <BookInfo books={books} addToCart={addToCart}/>}
+      render={() => (
+      <BookInfo books={books} addToCart={addToCart}/>
+    )}
       />
-      <Route path="/cart" render={() => <Cart books={books} cart={cart} />} />
+      <Route path="/cart"
+      render={() => (
+      <Cart
+        books={books}
+        cart={cart}
+        changeQuantity={changeQuantity} 
+        removeItem={removeItem}
+      />)}
+      />
       <Route
-  path="/books/:id"
-  exact
-  render={() => (
+        path="/books/:id"
+        exact
+        render={() => (
     <BookInfo books={books} addToCart={addToCart} cart={cart} />
   )}
 />
