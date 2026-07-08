@@ -13,7 +13,7 @@ const Book = ({ book}) => {
     useEffect(() => {
         const image = new Image();
         image.src = book.url;
-        image.onLoad = () => {
+        image.onload = () => {
             setTimeout(() => {
             if (mountedRef.current) {
                setImg(image);
@@ -31,7 +31,7 @@ const Book = ({ book}) => {
                  <Link to={`/books/${book.id}`}>
                 <figure className="book__img--wrapper">
                     <img
-                    src={img.url}
+                    src={img.src}
                     alt=""
                     className="book__img"/>
                 </figure>
