@@ -1,7 +1,6 @@
 import React from 'react';
 import { books } from "../data";
 import Book from "./ui/Book.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Discounted = () => {
     return (

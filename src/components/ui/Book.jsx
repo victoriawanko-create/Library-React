@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import Rating from './Rating.jsx';
 import Price from './Price.jsx';
